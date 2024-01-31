@@ -1,0 +1,64 @@
+q1
+
+
+#include <iostream>
+#include <set>
+#include <vector>
+
+bool containsDuplicate(std::vector<int>& nums) {
+    std::set<int> uniqueNums;
+    for (int num : nums) {
+        if (uniqueNums.count(num) > 0) {
+            return true;
+        }
+        uniqueNums.insert(num);
+    }
+    return false;
+}
+
+int main() {
+    std::vector<int> input1 = {1, 2, 1, 3, 1};
+    std::vector<int> input2 = {1, 2, 3, 4, 5};
+
+    std::cout << "Sample output for input1: " << (containsDuplicate(input1) ? "true" : "false") << std::endl;
+    std::cout << "Sample output for input2: " << (containsDuplicate(input2) ? "true" : "false") << std::endl;
+
+    return 0;
+}
+
+
+
+
+q2
+
+
+
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+
+std::unordered_map<int, int> countOccurrences(std::vector<int>& nums) {
+    std::unordered_map<int, int> occurrences;
+    for (int num : nums) {
+        occurrences[num]++;
+    }
+    return occurrences;
+}
+
+int main() {
+    std::vector<int> input1 = {1, 2, 1, 3, 1};
+    std::vector<int> input2 = {1, 2, 3, 4, 2};
+
+    std::unordered_map<int, int> occurrences1 = countOccurrences(input1);
+    std::unordered_map<int, int> occurrences2 = countOccurrences(input2);
+
+    for (const auto& entry : occurrences1) {
+        std::cout << "Occurrence of " << entry.first << " in input1: " << entry.second << std::endl;
+    }
+
+    for (const auto& entry : occurrences2) {
+        std::cout << "Occurrence of " << entry.first << " in input2: " << entry.second << std::endl;
+    }
+
+    return 0;
+}
